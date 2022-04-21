@@ -1,5 +1,5 @@
 body {
-  align-content: center;
+  text-align: center;
 }
 
 .table {
@@ -11,13 +11,20 @@ body {
 
 .cell {
   display: inline-block;
-  /* background-color: lightblue; */
+  /* border: solid 1px gray; */
+  text-align: center;
   width: 200px;
   height: 200px;
 }
 
+img{
+  width: 150px;
+  height: 150px;
+}
+
 .cell:hover {
-  border: solid thin gray;
+  border: solid thin black;
+  box-sizing: border-box;
 }
 
 /* i want to align the figure and caption to center */
