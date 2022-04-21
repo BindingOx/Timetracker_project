@@ -2,7 +2,7 @@ body {
   text-align: center;
 }
 
-.table {
+.container {
   /* display: block; */
 }
 .row {
@@ -36,3 +36,4 @@ p {
 /* i want to align the figure and caption to center */
 figcaption {
 }
+
