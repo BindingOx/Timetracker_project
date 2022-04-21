@@ -9,11 +9,17 @@ body {
   /* display: block; */
 }
 
-/* i want to align a placeholder image and caption center */
 .cell {
-  /* border: solid; */
   display: inline-block;
   /* background-color: lightblue; */
   width: 200px;
   height: 200px;
+}
+
+.cell:hover {
+  border: solid thin gray;
+}
+
+/* i want to align the figure and caption to center */
+figcaption {
 }
