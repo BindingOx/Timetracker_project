@@ -17,9 +17,15 @@ body {
   height: 200px;
 }
 
-img{
+img {
   width: 150px;
   height: 150px;
+  padding-top: 10px;
+  /* padding-bottom: 10px; */
+}
+
+p {
+  margin-top: 3px;
 }
 
 .cell:hover {
