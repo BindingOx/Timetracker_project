@@ -37,12 +37,29 @@
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
               <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="#">My Pets</a>
+              <a class="nav-link" href="#"
+                >Notifications <span class="badge bg-secondary">4</span></a
+              >
               <a class="nav-link disabled">Disabled</a>
             </div>
           </div>
         </div>
       </nav>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
     </header>
 
     <main class="text-center">
@@ -51,30 +68,34 @@
         <h3>Time elapsing</h3>
       </section>
 
-      <section>
-        <div class="container">
-<!-- Pet Box -->
+      <section class="container">
+
+<!-- * Pet Box -->
+<!-- TODO: Add indication of how many points an action uses -->
+
           <div class="row">
-            <div class="col">
+            <div class="col-4">
               <div class="alert alert-primary" role="alert">
-                A simple primary alert—check it out!
+                You have <a href="#" class="alert-link">20 points</a> remaining
               </div>
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary">Left</button>
-                <button type="button" class="btn btn-primary">Middle</button>
-                <button type="button" class="btn btn-primary">Right</button>
+                <button type="button" class="btn btn-primary">Play</button>
+                <button type="button" class="btn btn-primary">Feed</button>
+                <button type="button" class="btn btn-primary">Exercise</button>
+                <button type="button" class="btn btn-primary">Medicine</button>
               </div>
             </div>
+          
 
-<!-- Activity Box -->
-            <div class="col">
-                <div class="container">
+<!-- * Activity Box -->
+
+            <section class="col-8">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-auto">
                       <div class="text-center">
                         <img
+                        class="img-fluid"
                           src="https://via.placeholder.com/150"
-                          class="img-fluid"
                           alt="..."
                         />
                         <p>Text</p>
@@ -83,8 +104,8 @@
                     <div class="col-sm-auto">
                       <div class="text-center">
                         <img
+                        class="img-fluid"
                           src="https://via.placeholder.com/150"
-                          class="img-fluid"
                           alt="..."
                         />
                         <p>Text</p>
@@ -93,14 +114,13 @@
                     <div class="col-sm-auto">
                       <div class="text-center">
                         <img
+                        class="img-fluid"
                           src="https://via.placeholder.com/150"
-                          class="img-fluid"
                           alt="..."
                         />
                         <p>Text</p>
                       </div>
                     </div>
-                  </div>
                 </div>
                 <div class="container">
                   <div class="row justify-content-md-center">
@@ -171,10 +191,10 @@
                   </div>
                 </div>
               </section>
-            </div>
+
           </div>
         </div>
-      </section>
+      </div>
     </main>
     <footer class="text-center">
       <p>
