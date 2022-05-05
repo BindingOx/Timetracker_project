@@ -13,19 +13,19 @@ body {
   display: inline-block;
   /* border: solid 1px gray; */
   text-align: center;
-  width: 200px;
-  height: 200px;
+  width: 50%;
+  height: 50%;
 }
 
 img {
-  width: 150px;
-  height: 150px;
-  padding-top: 10px;
+  width: 50%;
+  height: 50%;
+  padding-top: 1rem;
   /* padding-bottom: 10px; */
 }
 
 p {
-  margin-top: 3px;
+  margin-top: 1rem;
 }
 
 .cell:hover {
