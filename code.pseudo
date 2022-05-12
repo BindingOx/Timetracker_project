@@ -9,35 +9,33 @@ if (user clicks on box) do
 end
 
 while (activity.active) do
-    countUp
+    startTimer
 end
 
 // Spending points
 // When user clicks on a pet button, the pet activity is activated and points are spent from the users accumulated points. 
 // if the user has no points to spend, print some message
 
-pointCount
-newPointCount
+points
+newPoints
 petButton.feed
 petButton.play
 
 petButton.feed.cost=10
 petButton.play.cost=10
 
-newPointCount=pointCount-petButton.cost
 
 // if (user clicks on petButton) do
-//     calculate how many points user has
-//     spend it on pet activity if user has enough
+// calculate how many points user has
+// spend it on pet activity if user has enough
 // end else do
-//     print ("You dont have enough points to do this")
+// print ("You dont have enough points to do this")
 // end
 
-if (pointCount<petButton.cost) do
+if (points>petButton.cost) do //  spend it on pet activity if user has enough
     spendPoints
-    return newPointCount
-    print ("You have" newPointCount "points remaining")
+    points=points-petButton.cost
+    print ("You have" points "points remaining")
 end else do
     print ("You dont have enough points to do this")
-    
 end
