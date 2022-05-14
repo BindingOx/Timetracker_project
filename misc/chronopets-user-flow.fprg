@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-05-14 07:29:45 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzAxOjA2OjQyIFBNOzMxNzc="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzA3OjI5OjQ1IFBNOzk7MzMwNw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="startActivity" type="Boolean" array="False" size=""/>
+            <if expression="startActivity">
+                <then>
+                    <assign variable="timerActive" expression="true"/>
+                    <while expression="timerActive">
+                        <assign variable="pointsIncrease" expression="true"/>
+                        <if expression="reachDailyGoal">
+                            <then>
+                                <call expression="getRewardPoints"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </while>
+                    <assign variable="pointsIncrease" expression="false"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="havePoints">
+                <then>
+                    <if expression="haveEnoughPoints">
+                        <then>
+                            <call expression="interactWithPet"/>
+                        </then>
+                        <else/>
+                    </if>
+                </then>
+                <else/>
+            </if>
+            <if expression="petHappy">
+                <then>
+                    <call expression="gainXP"/>
+                    <call expression="levelUp"/>
+                    <call expression="rewardUser"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
