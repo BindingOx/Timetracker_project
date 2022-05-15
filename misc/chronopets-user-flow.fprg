@@ -4,49 +4,58 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Administrator"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2022-05-14 07:29:45 PM"/>
+        <attribute name="saved" value="2022-05-15 12:16:27 PM"/>
         <attribute name="created" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzAxOjA2OjQyIFBNOzMxNzc="/>
-        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzA3OjI5OjQ1IFBNOzk7MzMwNw=="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE1OzEyOjE2OjI3IFBNOzI0OzMzNDU="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
+            <comment text="petHappiness as from 0-10"/>
+            <comment text="dailyGoal=10 seconds"/>
+            <assign variable="petHappiness" expression="1"/>
+            <declare name="petfeedCost" type="Integer" array="False" size=""/>
+            <assign variable="petfeedCost" expression="5"/>
+            <assign variable="currentPoints" expression="10"/>
             <declare name="startActivity" type="Boolean" array="False" size=""/>
             <if expression="startActivity">
                 <then>
                     <assign variable="timerActive" expression="true"/>
                     <while expression="timerActive">
                         <assign variable="pointsIncrease" expression="true"/>
-                        <if expression="reachDailyGoal">
+                        <if expression="dailyGoal == dailyGoal">
                             <then>
-                                <call expression="getRewardPoints"/>
+                                <call expression="getRewardPoints(10)"/>
+                                <assign variable="rewardPoints" expression="10"/>
+                                <assign variable="currentPoints" expression="currentPoints+rewardPoints"/>
+                                <call expression="petHappiness(1)"/>
+                                <output expression="&quot;Your pet's happiness increased!&quot;" newline="True"/>
                             </then>
-                            <else/>
+                            <else>
+                                <call expression="petHappiness(-1)"/>
+                                <output expression="&quot;Your pet's happiness decreased!&quot;" newline="True"/>
+                                <comment text="when should this be said? maybe the next day?"/>
+                            </else>
                         </if>
                     </while>
                     <assign variable="pointsIncrease" expression="false"/>
                 </then>
                 <else/>
             </if>
-            <if expression="havePoints">
-                <then>
-                    <if expression="haveEnoughPoints">
-                        <then>
-                            <call expression="interactWithPet"/>
-                        </then>
-                        <else/>
-                    </if>
-                </then>
-                <else/>
-            </if>
-            <if expression="petHappy">
-                <then>
-                    <call expression="gainXP"/>
-                    <call expression="levelUp"/>
-                    <call expression="rewardUser"/>
-                </then>
-                <else/>
-            </if>
+            <while expression="havePoints">
+                <if expression="currentPoints &gt;= petFeedCost">
+                    <then>
+                        <call expression="feedPet"/>
+                        <call expression="petHappiness(1)"/>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+            <while expression="petUnhappy == false">
+                <call expression="gainXP"/>
+                <call expression="canLevelUp"/>
+                <call expression="canRewardUser"/>
+            </while>
         </body>
     </function>
 </flowgorithm>

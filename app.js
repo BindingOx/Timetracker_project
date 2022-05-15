@@ -42,6 +42,9 @@ if petLevel == petLevelTwo{
 let petXP;
 when petXP is >= someNumber then petLevel = 2...and so on...
 
+
+pet should have 3 states: unhappy, okay, happy
+
 ------------*/
 
 document.getElementById('activity').innerHTML = activity;
