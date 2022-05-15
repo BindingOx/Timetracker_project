@@ -4,35 +4,52 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Administrator"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2022-05-15 12:16:27 PM"/>
+        <attribute name="saved" value="2022-05-15 07:54:34 PM"/>
         <attribute name="created" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzAxOjA2OjQyIFBNOzMxNzc="/>
-        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE1OzEyOjE2OjI3IFBNOzI0OzMzNDU="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE1OzA3OjU0OjM0IFBNOzQ0OzMzNTE="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
-            <comment text="petHappiness as from 0-10"/>
-            <comment text="dailyGoal=10 seconds"/>
-            <assign variable="petHappiness" expression="1"/>
-            <declare name="petfeedCost" type="Integer" array="False" size=""/>
+            <declare name="dailyGoal" type="Real" array="False" size=""/>
+            <input variable="dailyGoal"/>
+            <comment text="petHappiness as from 0-10. 0-3 = petIsSad. 4-7 = petIsOkay. 8-10 = petIsHappy."/>
+            <comment text="dailyGoal is measured in hours.&#13;&#10;5 seconds for testing"/>
+            <declare name="dailyGoal" type="Real" array="False" size=""/>
+            <declare name="petHappiness" type="Integer" array="False" size=""/>
+            <declare name="petSad" type="Real" array="False" size=""/>
+            <declare name="petOkay" type="Real" array="False" size=""/>
+            <declare name="petHappy" type="Real" array="False" size=""/>
+            <assign variable="petHappiness" expression="5"/>
+            <assign variable="petSad" expression="0 &lt;= petHappiness &lt;= 3"/>
+            <assign variable="petOkay" expression="4 &lt;= petHappiness &lt;= 7"/>
+            <assign variable="petHappy" expression="8 &lt;= petHappiness &lt;= 10"/>
+            <declare name="dailyGoalReached" type="Boolean" array="False" size=""/>
+            <assign variable="dailyGoalReached" expression="false"/>
+            <declare name="petfeedCost" type="Real" array="False" size=""/>
             <assign variable="petfeedCost" expression="5"/>
+            <declare name="currentPoints" type="Real" array="False" size=""/>
             <assign variable="currentPoints" expression="10"/>
             <declare name="startActivity" type="Boolean" array="False" size=""/>
+            <declare name="timerActive" type="Boolean" array="False" size=""/>
+            <declare name="pointsIncrease" type="Boolean" array="False" size=""/>
+            <declare name="rewardPoints" type="Real" array="False" size=""/>
+            <declare name="points" type="Real" array="False" size=""/>
             <if expression="startActivity">
                 <then>
                     <assign variable="timerActive" expression="true"/>
                     <while expression="timerActive">
                         <assign variable="pointsIncrease" expression="true"/>
-                        <if expression="dailyGoal == dailyGoal">
+                        <if expression="dailyGoalReached">
                             <then>
                                 <call expression="getRewardPoints(10)"/>
                                 <assign variable="rewardPoints" expression="10"/>
                                 <assign variable="currentPoints" expression="currentPoints+rewardPoints"/>
-                                <call expression="petHappiness(1)"/>
+                                <assign variable="petHappiness" expression="petHappiness+1"/>
                                 <output expression="&quot;Your pet's happiness increased!&quot;" newline="True"/>
                             </then>
                             <else>
-                                <call expression="petHappiness(-1)"/>
+                                <assign variable="petHappiness" expression="petHappiness-2"/>
                                 <output expression="&quot;Your pet's happiness decreased!&quot;" newline="True"/>
                                 <comment text="when should this be said? maybe the next day?"/>
                             </else>
@@ -42,20 +59,38 @@
                 </then>
                 <else/>
             </if>
-            <while expression="havePoints">
+            <while expression="points &gt; 0">
                 <if expression="currentPoints &gt;= petFeedCost">
                     <then>
                         <call expression="feedPet"/>
-                        <call expression="petHappiness(1)"/>
+                        <assign variable="petHappiness" expression="petHappiness+1"/>
                     </then>
                     <else/>
                 </if>
             </while>
-            <while expression="petUnhappy == false">
+            <while expression="petSad == false">
                 <call expression="gainXP"/>
                 <call expression="canLevelUp"/>
                 <call expression="canRewardUser"/>
             </while>
+            <if expression="petHappy">
+                <then>
+                    <output expression="&quot;Your pet is happy&quot;" newline="False"/>
+                    <if expression="petOkay">
+                        <then>
+                            <output expression="&quot;Your pet is feeling ok&quot;" newline="False"/>
+                            <if expression="petSad">
+                                <then>
+                                    <output expression="&quot;Your pet is unhappy&quot;" newline="False"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </then>
+                        <else/>
+                    </if>
+                </then>
+                <else/>
+            </if>
         </body>
     </function>
 </flowgorithm>
