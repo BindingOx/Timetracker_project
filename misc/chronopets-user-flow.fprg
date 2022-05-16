@@ -4,9 +4,9 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Administrator"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2022-05-15 07:54:34 PM"/>
+        <attribute name="saved" value="2022-05-16 04:08:48 PM"/>
         <attribute name="created" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzAxOjA2OjQyIFBNOzMxNzc="/>
-        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE1OzA3OjU0OjM0IFBNOzQ0OzMzNTE="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE2OzA0OjA4OjQ4IFBNOzQ3OzMzNTY="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -15,7 +15,6 @@
             <input variable="dailyGoal"/>
             <comment text="petHappiness as from 0-10. 0-3 = petIsSad. 4-7 = petIsOkay. 8-10 = petIsHappy."/>
             <comment text="dailyGoal is measured in hours.&#13;&#10;5 seconds for testing"/>
-            <declare name="dailyGoal" type="Real" array="False" size=""/>
             <declare name="petHappiness" type="Integer" array="False" size=""/>
             <declare name="petSad" type="Real" array="False" size=""/>
             <declare name="petOkay" type="Real" array="False" size=""/>
@@ -47,6 +46,8 @@
                                 <assign variable="currentPoints" expression="currentPoints+rewardPoints"/>
                                 <assign variable="petHappiness" expression="petHappiness+1"/>
                                 <output expression="&quot;Your pet's happiness increased!&quot;" newline="True"/>
+                                <comment text="pet gains xp after goal reached"/>
+                                <assign variable="xpPoints" expression="xpPoints+10"/>
                             </then>
                             <else>
                                 <assign variable="petHappiness" expression="petHappiness-2"/>
@@ -68,7 +69,7 @@
                     <else/>
                 </if>
             </while>
-            <while expression="petSad == false">
+            <while expression="!petSad">
                 <call expression="gainXP"/>
                 <call expression="canLevelUp"/>
                 <call expression="canRewardUser"/>

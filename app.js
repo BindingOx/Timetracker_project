@@ -57,6 +57,31 @@ document.getElementById('activity').innerHTML = activity;
 // }
 // console.log(petHappiness(1));
 
+// * TIMER SECTION ============================
+
+var timerVar = setInterval(countTimer, 1000);
+var totalSeconds = 0;
+function countTimer() {
+	++totalSeconds;
+	var hour = Math.floor(totalSeconds / 3600);
+	var minute = Math.floor((totalSeconds - hour * 3600) / 60);
+	var seconds = totalSeconds - (hour * 3600 + minute * 60);
+	if (hour < 10) hour = '0' + hour;
+	if (minute < 10) minute = '0' + minute;
+	if (seconds < 10) seconds = '0' + seconds;
+	document.getElementById('timer').innerHTML =
+		hour + ':' + minute + ':' + seconds;
+}
+
+// * DAILY GOAL SECTION ============================
+
+let dailyGoal = setInterval(countTimer(), 5000);
+if (dailyGoal) {
+	alert("Congrats! You've reached your daily goal!");
+}
+
+// * PET SECTION ============================
+
 //petHappiness as from 0-10. 0-3 = petIsSad. 4-7 = petIsOkay. 8-10 = petIsHappy.
 
 let petHappiness = 4;
@@ -71,4 +96,17 @@ if (petHappy) {
 } else if (petSad) {
 	console.log('Your pet is unhappy.');
 }
-console.log(`Your pet is at happiness level: ${petHappiness}`)
+console.log(`Your pet is at happiness level: ${petHappiness}`);
+
+// xp points. When user achieves daily goal, pet should gain xp
+
+let xpPoints = 0;
+let xpPointsNeeded = 100;
+if (xpPoints >= xpPointsNeeded) {
+	console.log('Your pet is now at level 2!');
+} else {
+	let xpPointsLeft = xpPointsNeeded - xpPoints;
+	console.log(
+		`Your pet needs ${xpPointsLeft} experience points to get to level 2!`
+	);
+}
