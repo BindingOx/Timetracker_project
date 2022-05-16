@@ -4,9 +4,9 @@
         <attribute name="name" value=""/>
         <attribute name="authors" value="Administrator"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2022-05-16 04:08:48 PM"/>
+        <attribute name="saved" value="2022-05-16 07:47:23 PM"/>
         <attribute name="created" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE0OzAxOjA2OjQyIFBNOzMxNzc="/>
-        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE2OzA0OjA4OjQ4IFBNOzQ3OzMzNTY="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtXSU4xMC1QQzsyMDIyLTA1LTE2OzA3OjQ3OjIzIFBNOzUwOzMzNDk="/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -71,6 +71,16 @@
             </while>
             <while expression="!petSad">
                 <call expression="gainXP"/>
+                <declare name="xpPoints" type="Integer" array="False" size=""/>
+                <declare name="xpPointsNeeded" type="Integer" array="False" size=""/>
+                <if expression="xpPoints &gt;= &#13;&#10;xpPointsNeeded">
+                    <then>
+                        <output expression="&quot;Your pet is now at level 2!&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Your pet needs ${xpPointsLeft} experience points to get to level 2!&quot;" newline="True"/>
+                    </else>
+                </if>
                 <call expression="canLevelUp"/>
                 <call expression="canRewardUser"/>
             </while>

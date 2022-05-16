@@ -96,9 +96,9 @@ if (petHappy) {
 } else if (petSad) {
 	console.log('Your pet is unhappy.');
 }
-console.log(`Your pet is at happiness level: ${petHappiness}`);
+// console.log(`Your pet is at happiness level: ${petHappiness}`);
 
-// xp points. When user achieves daily goal, pet should gain xp
+//* xp points. When user achieves daily goal, pet should gain xp
 
 let xpPoints = 0;
 let xpPointsNeeded = 100;
